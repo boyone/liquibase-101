@@ -1,0 +1,32 @@
+databaseChangeLog:
+- include:
+      file: example-changelog.yaml
+- changeSet:
+    id: 1710201292072-1
+    author: boyone (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: CONSTRAINT_5
+            name: ID
+            type: INT
+        - column:
+            name: NAME
+            type: VARCHAR(50)
+        - column:
+            name: AGE
+            type: INT
+        - column:
+            name: LASTNAME
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: YEAR
+            type: INT
+        tableName: CUSTOMER
+
