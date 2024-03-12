@@ -44,7 +44,7 @@
 7. Run `rollback` command
 
    ```sh
-   liquibase rollback --changelog-file=example-changelog.sql
+   liquibase rollback-count --count=1 --changelog-file=example-changelog.sql
    ```
 
 8. Run `status` command
