@@ -13,7 +13,9 @@
 ## Part II
 
 1. [PostgreSQL](./postgresql.md)
-
-2. Workflow
+2. [A changelog structure](https://docs.liquibase.com/start/design-liquibase-project.html)
+   - Object-oriented
+   - Release-oriented
+3. Workflow
    - manage test data(filter with label)
    - too many changelog
