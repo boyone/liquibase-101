@@ -16,6 +16,5 @@
 2. [A changelog structure](https://docs.liquibase.com/start/design-liquibase-project.html)
    - Object-oriented
    - Release-oriented
-3. Workflow
-   - manage test data(filter with label)
-   - too many changelog
+3. [Manage changesets with `context` and `context-filter`](./context-filter.md)
+   
