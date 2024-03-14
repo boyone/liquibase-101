@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16.2-alpine3.19
+    container_name: db
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=demo
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d demo" ]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+    networks:
+      - demo
+
+  liquibase:
+    image: liquibase/liquibase:4.26.0-alpine
+    container_name: liquibase
+    volumes:
+      - ./:/liquibase/changelog/
+    command: --defaults-file=changelog/liquibase.properties update --changelog-file=changelog/example-changelog.yaml
+    depends_on: 
+      db: 
+        condition: service_healthy
+    networks:
+      - demo
+
+  adminer:
+    image: adminer
+    restart: always
+    depends_on: 
+      db: 
+        condition: service_healthy
+    ports:
+      - 8080:8080
+    networks:
+      - demo
+
+networks:
+  demo:
+    name: demo
